@@ -1,0 +1,10 @@
+.venv/
+.env
+data/raw/
+data/staging/
+data/processed/
+data/quarantine/
+*.hyper
+__pycache__/
+.ipynb_checkpoints/
+mlruns/
