@@ -105,5 +105,3 @@ The **pandas dtypes below were observed directly from the local PaySim CSV** sup
 4. Run the profiling notebook/script once available and update Section 7 with measured results.
 
 ---
-
-_Documentation version: 1.0 — Day 002. Schema verified; full-dataset statistics will be added after measurement._
