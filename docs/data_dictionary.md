@@ -52,21 +52,6 @@ The **pandas dtypes below were observed directly from the local PaySim CSV** sup
 - **No guaranteed transaction ID:** Do not assume an explicit unique transaction key exists. If an ingestion key is needed, create a reproducible row identifier and document how it is generated.
 - **No native customer KYC, device ID, IP address or merchant risk table:** Do not invent those fields in the original dataset schema.
 
-## 4. Data-quality checks (planned)
-
-| Check               | Proposed rule                                                                          | Action                                                  |
-| ------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| Schema conformity   | Required 11 columns exist; expected types can be parsed                                | Reject/quarantine incompatible input                    |
-| Null identifiers    | `nameOrig`, `nameDest` and `type` are populated                                        | Quarantine and report                                   |
-| Amount validity     | `amount` is numeric and >= 0                                                           | Quarantine invalid records; investigate zero separately |
-| Label domain        | `isFraud`, `isFlaggedFraud` belong to {0,1}                                            | Quarantine invalid labels                               |
-| Time validity       | `step` is an integer >= 0                                                              | Quarantine invalid records                              |
-| Duplicates          | Report exact duplicate rows; do not automatically delete repeated-looking transactions | Review with business rules                              |
-| Balance consistency | Compare balances by transaction type, with documented exceptions                       | Flag for investigation, not automatic deletion          |
-| Class imbalance     | Report count and proportion of each fraud label                                        | Use suitable evaluation metrics later                   |
-
-> **Important:** This section specifies _planned validation rules_. It does not claim that any errors have been found yet.
-
 ## 5. Known limitations and modeling cautions
 
 1. PaySim is **synthetic**, so patterns and fraud labels should not be presented as measured real-world banking behavior.
